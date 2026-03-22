@@ -292,8 +292,7 @@ describe('任務四：Axios API 串接', () => {
   describe('getProductsWithAxios', () => {
     test('應回傳陣列', async () => {
       if (!homework.API_PATH) {
-        console.log('提示：請在 .env 設定 API_PATH');
-        return;
+        throw new Error('請先在 .env 設定 API_PATH，才能執行任務四測試');
       }
 
       const result = await homework.getProductsWithAxios();
@@ -301,7 +300,9 @@ describe('任務四：Axios API 串接', () => {
     });
 
     test('應有產品資料', async () => {
-      if (!homework.API_PATH) return;
+      if (!homework.API_PATH) {
+        throw new Error('請先在 .env 設定 API_PATH，才能執行任務四測試');
+      }
 
       const result = await homework.getProductsWithAxios();
       expect(result.length).toBeGreaterThan(0);
@@ -311,8 +312,7 @@ describe('任務四：Axios API 串接', () => {
   describe('addToCartWithAxios', () => {
     test('應回傳物件', async () => {
       if (!homework.API_PATH) {
-        console.log('提示：請在 .env 設定 API_PATH');
-        return;
+        throw new Error('請先在 .env 設定 API_PATH，才能執行任務四測試');
       }
 
       const products = await homework.getProductsWithAxios();
@@ -323,7 +323,9 @@ describe('任務四：Axios API 串接', () => {
     });
 
     test('應回傳購物車資料', async () => {
-      if (!homework.API_PATH) return;
+      if (!homework.API_PATH) {
+        throw new Error('請先在 .env 設定 API_PATH，才能執行任務四測試');
+      }
 
       const products = await homework.getProductsWithAxios();
       const productId = products[0].id;
@@ -335,8 +337,7 @@ describe('任務四：Axios API 串接', () => {
   describe('getOrdersWithAxios', () => {
     test('應回傳陣列', async () => {
       if (!homework.API_PATH || !homework.ADMIN_TOKEN) {
-        console.log('提示：請在 .env 設定 API_PATH 和 API_KEY');
-        return;
+        throw new Error('請先在 .env 設定 API_PATH 和 API_KEY，才能執行任務四測試');
       }
 
       const result = await homework.getOrdersWithAxios();
@@ -353,8 +354,7 @@ describe('任務五：OrderService 整合', () => {
   describe('fetchOrders', () => {
     test('應回傳陣列', async () => {
       if (!homework.OrderService.apiPath || !homework.OrderService.token) {
-        console.log('提示：請在 .env 設定 API_PATH 和 API_KEY');
-        return;
+        throw new Error('請先在 .env 設定 API_PATH 和 API_KEY，才能執行任務五測試');
       }
 
       const result = await homework.OrderService.fetchOrders();
